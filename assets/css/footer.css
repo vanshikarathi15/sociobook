@@ -1,0 +1,22 @@
+#layout-footer {
+  position: fixed;
+  color: white;
+  background: grey;
+  padding: 5px 0px;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  font-size: 22px; }
+
+#layout-footer a {
+  color: white;
+  text-decoration: none; }
+
+#layout-footer ul {
+  margin-top: 0px;
+  list-style: none; }
+
+#layout-footer ul li {
+  display: inline-block; }

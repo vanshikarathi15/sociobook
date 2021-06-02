@@ -1,0 +1,62 @@
+<!-- <html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+    </head>
+    <body> -->
+
+        <!-- ye jo hm alag se _header.ejs or footer.ejs banaye h use include krna v toa h uska procedure neeche -->
+        <!-- line 11 ka likhne ka tarika please google iske andar inclue se lkh de<%- -%> -->
+        <!--  include('_header');  -->
+        <link rel="stylesheet" href="/css/home.css">
+        <h1 id="s2">
+            Sociobook / <%= title %>
+        </h1>
+<div id="home-container">
+        <section id="feed-posts">
+            <h4>Posts</h4>
+            <!-- usi ko dikhega jo sigin in h -->
+            <% if(locals.user) { %>
+            <form action="/posts/create" id="new-post-form" method="POST">
+                <textarea name="content" cols="30" rows="4" placeholder="Type here...." required></textarea>
+                <input type="submit" value="Post">
+            </form>
+            <% } %>
+        
+
+        <!-- ye second step h display krna ka -->
+        <div id="posts-list-container">
+            <ul>
+                <% for(post of posts) { %>
+                    <!-- partials include jo _post.ejs -->
+                    <%-include('_post')-%>
+
+               <% } %>
+            </ul>
+        </div>
+    </section>
+        
+<section id="user-friends">
+    <h4>Friends</h4>
+    <% for(u of all_users){ %>
+        <p>
+            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+        </p>
+    <% } %>
+
+</section>
+</div>
+<!-- importing the script for creating the comments -->
+<script src="/js/home_post_comments.js" ></script>
+<script src="/js/home_posts.js"></script>
+
+
+<!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
+<script src="js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
